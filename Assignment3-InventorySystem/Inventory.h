@@ -51,8 +51,9 @@ public:
     void Resize(int newCapacity) {
         T* newItems = new T[newCapacity];
 
-        for (int i = 0, j = 0; i < newCapacity && j < capacity_; i++, j++) {
-            newItems[i] = pItems_[j];
+        int copyLen = size_ < newCapacity ? size_ : newCapacity;
+        for (int i = 0; i < copyLen; i++) {
+            newItems[i] = pItems_[i];
         }
 
         delete[] pItems_;
